@@ -1,0 +1,290 @@
+{
+  "project_title": "GestureOS AI – Intelligent Touchless Human-Computer Interaction System",
+  "design_system_archetype": "The Performance Pro / Precision Cybernetics HUD (Tactical Dark Command Console)",
+  "theme": "dark",
+  "emotional_tone": "Precise, authoritative, cinematic, latency-sensitive computer vision cockpit",
+  "color_palette": {
+    "background_base": "#08090C",
+    "background_surface": "#0E1117",
+    "background_elevated": "#151922",
+    "border_subtle": "rgba(255, 255, 255, 0.08)",
+    "border_active": "rgba(56, 189, 248, 0.4)",
+    "text_primary": "#F1F5F9",
+    "text_secondary": "#94A3B8",
+    "text_muted": "#64748B",
+    "brand_cyan": "#00F0FF",
+    "brand_emerald": "#10B981",
+    "brand_amber": "#F59E0B",
+    "brand_rose": "#F43F5E",
+    "hud_scanline": "rgba(0, 240, 255, 0.03)",
+    "landmark_points_color": "#00F0FF",
+    "landmark_connector_color": "rgba(0, 240, 255, 0.65)",
+    "landmark_wrist_anchor": "#10B981"
+  },
+  "typography": {
+    "display_font": "Outfit, var(--font-sans), sans-serif",
+    "body_font": "Geist Variable, var(--font-sans), sans-serif",
+    "mono_font": "JetBrains Mono Variable, ui-monospace, monospace",
+    "hierarchy": {
+      "h1_title": "text-2xl sm:text-3xl font-extrabold tracking-tight uppercase",
+      "h2_section": "text-lg sm:text-xl font-bold tracking-normal uppercase text-slate-200",
+      "h3_card_heading": "text-sm sm:text-base font-semibold tracking-wide text-slate-300",
+      "metric_label": "text-[11px] font-mono uppercase tracking-[0.18em] text-slate-400",
+      "metric_value": "text-xl sm:text-2xl font-mono font-bold tracking-tight text-white",
+      "body_text": "text-sm leading-relaxed text-slate-300",
+      "badge_caption": "text-xs font-mono font-medium tracking-wider"
+    }
+  },
+  "layout_architecture": {
+    "mode": "Dual-Viewport Tactical Command Grid (Mode B High Density + Kinetic Stage)",
+    "structure": [
+      {
+        "area": "System Top Nav Bar",
+        "description": "Fixed header with live telemetry pill (FPS, inference latency ms, camera status, engine mode: MediaPipe GPU), brand logo, gesture quick reference modal toggle, and reset/fullscreen triggers.",
+        "height": "h-16",
+        "styling": "border-b border-white/10 bg-[#0A0D14]/90 backdrop-blur-xl px-6 flex items-center justify-between z-40"
+      },
+      {
+        "area": "Command Workspace Grid",
+        "grid_classes": "grid grid-cols-1 lg:grid-cols-12 gap-5 p-4 sm:p-6 max-w-[1720px] mx-auto min-h-[calc(100vh-4rem)]",
+        "zones": {
+          "primary_vision_hud": {
+            "col_span": "lg:col-span-7 xl:col-span-7",
+            "content": "Interactive 16:9 mirrored Webcam Stream with Canvas 21-point Landmark Overlay, Reticle Crosshairs, HUD Framing Brackets, Dynamic Gesture Detection Pill, Confidence Gauge, and Camera Controls (Start/Stop, Switch Camera, Mirror Toggle, Overlay Visibility)."
+          },
+          "interactive_deck_controller": {
+            "col_span": "lg:col-span-5 xl:col-span-5",
+            "content": "Live Presentation Deck Stage driven by gestures: Active Slide Visual, Slide Progress Dots, Thumbnails strip, Command Action Log, and Manual Override Controls (Prev, Next, Pause/Play, Reset)."
+          }
+        }
+      },
+      {
+        "area": "Gesture Matrix Dock (Bottom Accordion/Drawer or Sub-Panel)",
+        "description": "Quick-glance visual gesture command mapping card displaying the recognized vocabulary: Open Palm (Pause/Resume), Swipe Right / Point Right (Next Slide), Swipe Left / Point Left (Previous Slide), Thumbs Up / Closed Fist (Confirm / Lock), Victory / Peace (Quick Overview / Index), and Stop Gesture."
+      }
+    ]
+  },
+  "gestures_mapping_spec": [
+    {
+      "gesture": "Open Hand / High Five",
+      "action": "Pause / Resume Presentation Auto-Flow",
+      "command_code": "CMD_PLAY_PAUSE",
+      "confidence_threshold": 0.72,
+      "color": "#10B981",
+      "icon_hint": "Hand",
+      "cooldown_ms": 1000
+    },
+    {
+      "gesture": "Pointing Right / Swipe Right",
+      "action": "Next Slide",
+      "command_code": "CMD_SLIDE_NEXT",
+      "confidence_threshold": 0.75,
+      "color": "#00F0FF",
+      "icon_hint": "ArrowRight",
+      "cooldown_ms": 700
+    },
+    {
+      "gesture": "Pointing Left / Swipe Left",
+      "action": "Previous Slide",
+      "command_code": "CMD_SLIDE_PREV",
+      "confidence_threshold": 0.75,
+      "color": "#00F0FF",
+      "icon_hint": "ArrowLeft",
+      "cooldown_ms": 700
+    },
+    {
+      "gesture": "Thumbs Up",
+      "action": "Confirm Selection / Bookmark Slide",
+      "command_code": "CMD_CONFIRM",
+      "confidence_threshold": 0.80,
+      "color": "#F59E0B",
+      "icon_hint": "ThumbsUp",
+      "cooldown_ms": 1200
+    },
+    {
+      "gesture": "Closed Fist / Stop Sign",
+      "action": "Halt Gesture Tracking / Emergency Standby",
+      "command_code": "CMD_STANDBY_TOGGLE",
+      "confidence_threshold": 0.82,
+      "color": "#F43F5E",
+      "icon_hint": "OctagonAlert",
+      "cooldown_ms": 1200
+    }
+  ],
+  "visual_enhancers": {
+    "hud_corner_brackets": "Subtle 8px L-shaped corner indicators on video HUD and slide stage (`border-t-2 border-l-2 border-cyan-400/70`)",
+    "scanline_effect": "CSS repeating linear gradient for authentic high-tech optic sensor look without obscuring camera feed",
+    "landmark_glow": "Canvas context shadowBlur = 10, shadowColor = '#00F0FF' around the 21 finger joints with cyan skeleton lines",
+    "confidence_bar": "Segmented tactical gauge with 10 bars lighting up based on inference confidence",
+    "gesture_feedback_beacon": "A floating HUD pulse banner that animates when a gesture triggers a slide change (e.g. 'NEXT SLIDE DETECTED (94%)' with smooth motion.div scale)"
+  },
+  "interactive_presentation_deck": {
+    "title": "GestureOS AI: Next-Gen Touchless HCI",
+    "slides": [
+      {
+        "index": 1,
+        "title": "Autonomous Touchless Interfaces",
+        "subtitle": "Computer Vision & 21-Point Skeletal Coordinate Processing",
+        "badge": "01 // SYSTEM OVERVIEW",
+        "image": "https://images.unsplash.com/photo-1674027444485-cec3da58eef4?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NTJ8MHwxfHNlYXJjaHwyfHxhaSUyMG5ldXJhbCUyMG5ldHdvcmslMjB0ZWNobm9sb2d5fGVufDB8fHx8MTc5NTAzMjI3N3ww&ixlib=rb-4.1.0&q=85",
+        "highlights": [
+          "Zero-latency edge landmark extraction via Google MediaPipe",
+          "Dense 21-node Cartesian tensor mapping in browser WebGL",
+          "Touch-free interaction for sterile and surgical environments"
+        ]
+      },
+      {
+        "index": 2,
+        "title": "Deep Neural Network Architecture",
+        "subtitle": "Multilayer Perceptron for Real-time Pose Classification",
+        "badge": "02 // NEURAL PIPELINE",
+        "image": "https://images.unsplash.com/photo-1697577418970-95d99b5a55cf?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NTJ8MHwxfHNlYXJjaHwxfHxhaSUyMG5ldXJhbCUyMG5ldHdvcmslMjB0ZWNobm9sb2d5fGVufDB8fHx8MTc5NTAzMjI3N3ww&ixlib=rb-4.1.0&q=85",
+        "highlights": [
+          "Normalized landmark distances relative to wrist anchor (Landmark 0)",
+          "Vector angular calculation resistant to scale & rotation variance",
+          "Sub-15ms inference latency across consumer webcams"
+        ]
+      },
+      {
+        "index": 3,
+        "title": "Real-time Command Dispatcher",
+        "subtitle": "Debounced State Machine & False-Positive Rejection",
+        "badge": "03 // HCI PROTOCOL",
+        "image": "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2MDV8MHwxfHNlYXJjaHwzfHxtb2Rlcm4lMjB0ZWNobm9sb2d5JTIwcHJlc2VudGF0aW9uJTIwY29uZmVyZW5jZXxlbnwwfHx8fDE3OTUwMzIyNzN8MA&ixlib=rb-4.1.0&q=85",
+        "highlights": [
+          "Rolling 5-frame stability consensus buffer",
+          "Temporal hysteresis preventing accidental double triggers",
+          "Kinematic velocity estimation for directional swipe detection"
+        ]
+      },
+      {
+        "index": 4,
+        "title": "Industry Deployments & Impact",
+        "subtitle": "Keynote Auditoriums, Healthcare Theatres & Smart Labs",
+        "badge": "04 // APPLICATION HORIZONS",
+        "image": "https://images.unsplash.com/photo-1582192730841-2a682d7375f9?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2MDV8MHwxfHNlYXJjaHw0fHxtb2Rlcm4lMjB0ZWNobm9sb2d5JTIwcHJlc2VudGF0aW9uJTIwY29uZmVyZW5jZXxlbnwwfHx8fDE3OTUwMzIyNzN8MA&ixlib=rb-4.1.0&q=85",
+        "highlights": [
+          "Hands-free presentation navigation without physical remotes",
+          "Sterile operating room medical imaging manipulation",
+          "Universal accessibility for mobility-impaired individuals"
+        ]
+      }
+    ]
+  },
+  "component_hierarchy": [
+    {
+      "name": "NavigationHeader",
+      "path": "src/components/NavigationHeader.tsx",
+      "test_ids": [
+        "app-header",
+        "app-brand-logo",
+        "telemetry-fps-badge",
+        "telemetry-latency-badge",
+        "gesture-guide-modal-trigger",
+        "camera-toggle-main-button"
+      ]
+    },
+    {
+      "name": "WebcamHudStream",
+      "path": "src/components/WebcamHudStream.tsx",
+      "description": "Video stream + Canvas 21-point landmark overlay + FPS counter + bounding box + tracking indicators",
+      "test_ids": [
+        "webcam-stream-container",
+        "webcam-video-element",
+        "landmark-canvas-overlay",
+        "camera-permission-banner",
+        "camera-start-button",
+        "camera-stop-button",
+        "landmark-toggle-switch",
+        "mirror-video-button",
+        "current-gesture-hud-badge",
+        "confidence-meter-bar"
+      ]
+    },
+    {
+      "name": "PresentationDeck",
+      "path": "src/components/PresentationDeck.tsx",
+      "description": "Dynamic slide presenter responding to gesture actions with manual fallback buttons, full-screen capability, and auto-play pause states",
+      "test_ids": [
+        "presentation-stage-container",
+        "slide-current-view",
+        "slide-title-text",
+        "slide-index-counter",
+        "btn-slide-prev",
+        "btn-slide-next",
+        "btn-slide-play-pause",
+        "btn-slide-fullscreen",
+        "slide-thumbnail-1",
+        "slide-thumbnail-2",
+        "slide-thumbnail-3",
+        "slide-thumbnail-4"
+      ]
+    },
+    {
+      "name": "GestureConfidenceTelemetry",
+      "path": "src/components/GestureConfidenceTelemetry.tsx",
+      "description": "Detailed telemetry panel showing classified probabilities across all recognized gesture categories in real time",
+      "test_ids": [
+        "gesture-telemetry-container",
+        "gesture-prob-open-hand",
+        "gesture-prob-point-right",
+        "gesture-prob-point-left",
+        "gesture-prob-thumbs-up",
+        "gesture-prob-fist",
+        "trigger-cooldown-indicator"
+      ]
+    },
+    {
+      "name": "GestureReferenceModal",
+      "path": "src/components/GestureReferenceModal.tsx",
+      "description": "Dialog listing hand pose diagrams, landmark numbering guide, and practical tips for lighting and distance",
+      "test_ids": [
+        "gesture-guide-dialog",
+        "gesture-guide-close-btn"
+      ]
+    }
+  ],
+  "accessibility_and_ux_states": {
+    "camera_not_allowed": "High-contrast tactical fallback card explaining browser camera permissions with direct Retry and Demo Simulation mode trigger.",
+    "camera_loading": "Pulsing radar crosshair with 'INITIALIZING OPTIC SENSOR & WEBGPU...' status indicator.",
+    "no_hand_detected": "Amber pulsing 'SEARCHING TARGET // POSITION HAND IN RETICLE' HUD label.",
+    "hand_locked": "Glowing cyan reticle with 'TARGET ACQUIRED // 21 NODES ACTIVE' and live confidence meter.",
+    "gesture_executed": "Audible/visual tactile flare, subtle green border flash on slide stage, and command banner showing the dispatched trigger.",
+    "keyboard_fallback": "Complete keyboard navigation support (Left Arrow: Prev, Right Arrow: Next, Space: Pause/Resume, C: Camera toggle)."
+  },
+  "implementation_notes_for_agent": {
+    "engine_strategy": "Use `@mediapipe/tasks-vision` or `@tensorflow-models/hand-pose-detection` with `@tensorflow/tfjs-core`. In case of network sandbox / CDN issues in container environments, provide a high-precision algorithmic geometric kinematic classifier fallback that calculates finger extension states and thumb angles directly from the 21 normalized landmarks (pip vs tip Euclidean coordinates) so the app works instantaneously with 100% reliability.",
+    "cooldown_debounce": "Implement a 700ms cooldown window between gesture triggers to prevent slide runaway.",
+    "canvas_dpi": "Synchronize video `videoWidth`/`videoHeight` to `<canvas>` element dimensions and scale coordinates accurately.",
+    "styling_primitives": "Utilize Tailwind CSS v4 alongside Radix / Lucide icons. Monospaced indicators for all coordinates and telemetry metrics."
+  },
+  "image_urls": [
+    {
+      "category": "presentation_slide_1",
+      "url": "https://images.unsplash.com/photo-1674027444485-cec3da58eef4?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NTJ8MHwxfHNlYXJjaHwyfHxhaSUyMG5ldXJhbCUyMG5ldHdvcmslMjB0ZWNobm9sb2d5fGVufDB8fHx8MTc5NTAzMjI3N3ww&ixlib=rb-4.1.0&q=85",
+      "description": "Neural network abstract geometry representing computational vision"
+    },
+    {
+      "category": "presentation_slide_2",
+      "url": "https://images.unsplash.com/photo-1697577418970-95d99b5a55cf?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NTJ8MHwxfHNlYXJjaHwxfHxhaSUyMG5ldXJhbCUyMG5ldHdvcmslMjB0ZWNobm9sb2d5fGVufDB8fHx8MTc5NTAzMjI3N3ww&ixlib=rb-4.1.0&q=85",
+      "description": "Microchip processor representing deep learning edge inference"
+    },
+    {
+      "category": "presentation_slide_3",
+      "url": "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2MDV8MHwxfHNlYXJjaHwzfHxtb2Rlcm4lMjB0ZWNobm9sb2d5JTIwcHJlc2VudGF0aW9uJTIwY29uZmVyZW5jZXxlbnwwfHx8fDE3OTUwMzIyNzN8MA&ixlib=rb-4.1.0&q=85",
+      "description": "Presenter on modern stage showing touchless interaction in action"
+    },
+    {
+      "category": "presentation_slide_4",
+      "url": "https://images.unsplash.com/photo-1582192730841-2a682d7375f9?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2MDV8MHwxfHNlYXJjaHw0fHxtb2Rlcm4lMjB0ZWNobm9sb2d5JTIwcHJlc2VudGF0aW9uJTIwY29uZmVyZW5jZXxlbnwwfHx8fDE3OTUwMzIyNzN8MA&ixlib=rb-4.1.0&q=85",
+      "description": "High tech symposium auditorium representing real-world deployments"
+    }
+  ],
+  "UNIVERSAL_GUIDELINES_FOR_MAIN_AGENT": [
+    "Never produce flat, generic gray dashboard cards. Use precision HUD aesthetics with dark obsidian background (#08090C), crisp 1px borders with cyan glow on active states, and tactical bracketed corners.",
+    "Canvas landmark drawing must be performant: draw joints as cyan circles, connecting bones as semi-transparent glowing lines, and wrist joint in emerald.",
+    "Add explicit data-testid attributes to all interactive and informative nodes for reliable automated testing.",
+    "Provide responsive two-column grid on desktop (video HUD 7 cols, slide presenter 5 cols) and clean stacked view on mobile screens.",
+    "Include simulated demo hand gestures mode so testers or users without immediate webcam access or proper lighting can verify all gesture slide transitions smoothly."
+  ]
+}
